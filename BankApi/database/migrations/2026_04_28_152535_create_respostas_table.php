@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('respostas', function (Blueprint $table) {
             $table->id();
             $table->string('text');
-            $table->string('es_correcta');
+            $table->boolean('es_correcta');
             $table->timestamps();
         });
     }
