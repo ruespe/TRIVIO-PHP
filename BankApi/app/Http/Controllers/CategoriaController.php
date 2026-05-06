@@ -20,7 +20,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -28,7 +28,12 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categoria = Categoria::create($request->all());
+        return response()->json([
+            'success' => true,
+            'message' => 'Categoria creada correctament.',
+            'data' => $categoria
+        ]);
     }
 
     /**
