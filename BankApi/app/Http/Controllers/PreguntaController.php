@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Pregunta;
 class PreguntaController extends Controller
 {
     /**
@@ -11,7 +11,8 @@ class PreguntaController extends Controller
      */
     public function index()
     {
-        //
+        $preguntes = Pregunta::all();
+        return response()->json($preguntes);
     }
 
     /**
@@ -27,7 +28,8 @@ class PreguntaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pregunta = Pregunta::create($request->all());
+        return response()->json($pregunta, 201);
     }
 
     /**
@@ -35,7 +37,8 @@ class PreguntaController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $pregunta = Pregunta::findOrFail($id);
+        return response()->json($pregunta);
     }
 
     /**
@@ -51,7 +54,9 @@ class PreguntaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $pregunta = Pregunta::findOrFail($id);
+        $pregunta->update($request->all());
+        return response()->json($pregunta, 200);
     }
 
     /**
@@ -59,6 +64,10 @@ class PreguntaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $pregunta = Pregunta::findOrFail($id);
+        $pregunta->delete();
+        return response()->json([
+            'message' => 'Pregunta eliminada correctament '
+        ], 200);
     }
 }

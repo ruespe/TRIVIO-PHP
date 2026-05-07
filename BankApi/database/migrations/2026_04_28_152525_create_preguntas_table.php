@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('preguntes', function (Blueprint $table) {
             $table->id();
             $table->string('enunciat');
-            $table->string('dificultat');
+            $table->enum('dificultat', ['Fàcil','Mitja','Difícil']);
             $table->timestamps();
         });
     }

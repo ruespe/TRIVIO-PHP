@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Resposta;
 use Illuminate\Http\Request;
-
 class RespostaController extends Controller
 {
     /**
@@ -27,7 +27,8 @@ class RespostaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $resposta = Resposta::create($request->all());
+        return response()->json($resposta, 201);
     }
 
     /**

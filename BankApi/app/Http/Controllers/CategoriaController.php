@@ -29,11 +29,7 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
         $categoria = Categoria::create($request->all());
-        return response()->json([
-            'success' => true,
-            'message' => 'Categoria creada correctament.',
-            'data' => $categoria
-        ]);
+        return response()->json($categoria, 201);
     }
 
     /**
@@ -58,7 +54,9 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $categoria = Categoria::findOrFail($id);
+        $categoria->update($request->all());
+        return response()->json($categoria, 200);
     }
 
     /**
@@ -66,6 +64,10 @@ class CategoriaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $categoria = Categoria::findOrFail($id);
+        $categoria->delete();
+        return response()->json([
+            'message' => 'Categoria eliminada correctament'
+        ], 200);
     }
 }
