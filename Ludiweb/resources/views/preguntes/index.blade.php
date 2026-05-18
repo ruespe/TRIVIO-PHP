@@ -7,7 +7,7 @@
 </div>
 
 @if(empty($preguntes))
-    <p class="text-gray-500">No hi ha preguntes. <a href="{{ route('preguntes.create') }}" class="text-indigo-600 underline">Crea la primera!</a></p>
+<p class="text-gray-500">No hi ha preguntes. <a href="{{ route('preguntes.create') }}" class="text-indigo-600 underline">Crea la primera!</a></p>
 @else
 <div class="bg-white rounded-xl shadow overflow-hidden">
     <table class="w-full text-sm">
@@ -23,13 +23,13 @@
         <tbody class="divide-y divide-gray-100">
             @foreach($preguntes as $p)
             @php
-                $dif = $p['dificultat'] ?? '';
-                $difColor = match($dif) {
-                    'Fàcil'   => 'bg-green-100 text-green-700',
-                    'Mitja'   => 'bg-yellow-100 text-yellow-700',
-                    'Difícil' => 'bg-red-100 text-red-700',
-                    default   => 'bg-gray-100 text-gray-600',
-                };
+            $dif = $p['dificultat'] ?? '';
+            $difColor = match($dif) {
+            'Fàcil' => 'bg-green-100 text-green-700',
+            'Mitja' => 'bg-yellow-100 text-yellow-700',
+            'Difícil' => 'bg-red-100 text-red-700',
+            default => 'bg-gray-100 text-gray-600',
+            };
             @endphp
             <tr class="hover:bg-gray-50">
                 <td class="px-4 py-3 text-gray-400">{{ $p['id'] }}</td>

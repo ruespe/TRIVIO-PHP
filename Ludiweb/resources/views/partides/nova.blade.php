@@ -13,7 +13,7 @@
             <select name="num_preguntes"
                 class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400">
                 @foreach([5, 10, 15, 20] as $n)
-                    <option value="{{ $n }}" {{ $n == 10 ? 'selected' : '' }}>{{ $n }} preguntes</option>
+                <option value="{{ $n }}" {{ $n == 10 ? 'selected' : '' }}>{{ $n }} preguntes</option>
                 @endforeach
             </select>
         </div>

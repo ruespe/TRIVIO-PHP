@@ -11,10 +11,10 @@
 <div class="grid grid-cols-1 gap-3">
     @php
     $methodColors = [
-        'GET'    => 'bg-blue-100 text-blue-800',
-        'POST'   => 'bg-green-100 text-green-800',
-        'PUT'    => 'bg-yellow-100 text-yellow-800',
-        'DELETE' => 'bg-red-100 text-red-800',
+    'GET' => 'bg-blue-100 text-blue-800',
+    'POST' => 'bg-green-100 text-green-800',
+    'PUT' => 'bg-yellow-100 text-yellow-800',
+    'DELETE' => 'bg-red-100 text-red-800',
     ];
     @endphp
 

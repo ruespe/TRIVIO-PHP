@@ -134,4 +134,3 @@ class PartidaController extends Controller
     public function update(Request $request, string $id) {}
     public function destroy(string $id) {}
 }
-

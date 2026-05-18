@@ -17,9 +17,9 @@
                 class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400">
                 <option value="">-- Selecciona --</option>
                 @foreach($preguntes as $p)
-                    <option value="{{ $p['id'] }}" {{ (old('pregunta_id', $preguntaId) == $p['id']) ? 'selected' : '' }}>
-                        #{{ $p['id'] }} — {{ $p['enunciat'] }}
-                    </option>
+                <option value="{{ $p['id'] }}" {{ (old('pregunta_id', $preguntaId) == $p['id']) ? 'selected' : '' }}>
+                    #{{ $p['id'] }} — {{ $p['enunciat'] }}
+                </option>
                 @endforeach
             </select>
         </div>

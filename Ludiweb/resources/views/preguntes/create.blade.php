@@ -17,7 +17,7 @@
                 class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400">
                 <option value="">-- Selecciona --</option>
                 @foreach(['Fàcil', 'Mitja', 'Difícil'] as $d)
-                    <option value="{{ $d }}" {{ old('dificultat') == $d ? 'selected' : '' }}>{{ $d }}</option>
+                <option value="{{ $d }}" {{ old('dificultat') == $d ? 'selected' : '' }}>{{ $d }}</option>
                 @endforeach
             </select>
         </div>
@@ -27,7 +27,7 @@
                 class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400">
                 <option value="">-- Selecciona --</option>
                 @foreach($categories as $cat)
-                    <option value="{{ $cat['id'] }}" {{ old('categoria_id') == $cat['id'] ? 'selected' : '' }}>{{ $cat['nom'] }}</option>
+                <option value="{{ $cat['id'] }}" {{ old('categoria_id') == $cat['id'] ? 'selected' : '' }}>{{ $cat['nom'] }}</option>
                 @endforeach
             </select>
         </div>

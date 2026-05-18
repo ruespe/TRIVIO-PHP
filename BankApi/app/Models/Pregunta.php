@@ -14,11 +14,13 @@ class Pregunta extends Model
         'categoria_id'
     ];
 
-    public function categoria(){
+    public function categoria()
+    {
         return $this->belongsTo(Categoria::class);
     }
 
-    public function respostes(){
+    public function respostes()
+    {
         return $this->hasMany(Resposta::class);
     }
 }

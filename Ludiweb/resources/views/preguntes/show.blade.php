@@ -24,22 +24,22 @@
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-lg font-semibold text-gray-700">Respostes ({{ count($respostes) }}/3)</h2>
         @if(count($respostes) < 3)
-        <a href="{{ route('respostes.create', ['pregunta_id' => $pregunta['id']]) }}"
-           class="bg-green-600 hover:bg-green-700 text-white px-3 py-1.5 rounded-lg text-sm">+ Afegir resposta</a>
-        @endif
+            <a href="{{ route('respostes.create', ['pregunta_id' => $pregunta['id']]) }}"
+            class="bg-green-600 hover:bg-green-700 text-white px-3 py-1.5 rounded-lg text-sm">+ Afegir resposta</a>
+            @endif
     </div>
 
     @if(empty($respostes))
-        <p class="text-gray-400 text-sm">Sense respostes. Afegeix-ne fins a 3.</p>
+    <p class="text-gray-400 text-sm">Sense respostes. Afegeix-ne fins a 3.</p>
     @else
     <div class="space-y-2">
         @foreach($respostes as $r)
         <div class="bg-white rounded-lg border {{ $r['es_correcta'] ? 'border-green-400' : 'border-gray-200' }} px-4 py-3 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 @if($r['es_correcta'])
-                    <span class="text-green-500 font-bold">✓</span>
+                <span class="text-green-500 font-bold">✓</span>
                 @else
-                    <span class="text-gray-300">○</span>
+                <span class="text-gray-300">○</span>
                 @endif
                 <span class="text-gray-800">{{ $r['text'] }}</span>
             </div>

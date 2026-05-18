@@ -5,11 +5,11 @@
     <h1 class="text-2xl font-bold text-indigo-700 mb-6">Partida #{{ $id }}</h1>
 
     @if(empty($preguntes))
-        <div class="bg-yellow-50 border border-yellow-300 text-yellow-700 rounded-xl p-6 text-center">
-            <p class="font-semibold mb-2">No hi ha prou preguntes disponibles.</p>
-            <p class="text-sm">Afegeix preguntes i respostes des del gestor abans de jugar.</p>
-            <a href="{{ route('preguntes.create') }}" class="inline-block mt-4 bg-indigo-600 text-white px-5 py-2 rounded-lg hover:bg-indigo-700">Afegir preguntes</a>
-        </div>
+    <div class="bg-yellow-50 border border-yellow-300 text-yellow-700 rounded-xl p-6 text-center">
+        <p class="font-semibold mb-2">No hi ha prou preguntes disponibles.</p>
+        <p class="text-sm">Afegeix preguntes i respostes des del gestor abans de jugar.</p>
+        <a href="{{ route('preguntes.create') }}" class="inline-block mt-4 bg-indigo-600 text-white px-5 py-2 rounded-lg hover:bg-indigo-700">Afegir preguntes</a>
+    </div>
     @else
     <form method="POST" action="{{ route('partides.puntuar', $id) }}">
         @csrf
@@ -26,7 +26,7 @@
                     </label>
                     @endforeach
                     @if(empty($pregunta['respostes']))
-                        <p class="text-xs text-gray-400 italic">Aquesta pregunta no té respostes definides.</p>
+                    <p class="text-xs text-gray-400 italic">Aquesta pregunta no té respostes definides.</p>
                     @endif
                 </div>
             </div>

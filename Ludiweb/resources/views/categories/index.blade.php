@@ -7,7 +7,7 @@
 </div>
 
 @if(empty($categories))
-    <p class="text-gray-500">No hi ha categories. <a href="{{ route('categories.create') }}" class="text-indigo-600 underline">Crea la primera!</a></p>
+<p class="text-gray-500">No hi ha categories. <a href="{{ route('categories.create') }}" class="text-indigo-600 underline">Crea la primera!</a></p>
 @else
 <div class="bg-white rounded-xl shadow overflow-hidden">
     <table class="w-full text-sm">

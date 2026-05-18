@@ -50,7 +50,10 @@ class AuthController extends Controller
         ]);
 
         $response = $this->api->register($request->only(
-            'name', 'email', 'password', 'password_confirmation'
+            'name',
+            'email',
+            'password',
+            'password_confirmation'
         ));
 
         if ($response->successful()) {

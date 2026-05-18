@@ -19,7 +19,7 @@
 
         <div class="mt-6 w-full bg-gray-200 rounded-full h-4">
             <div class="bg-indigo-500 h-4 rounded-full transition-all"
-                 style="width: {{ $resultat['puntuacio'] }}%"></div>
+                style="width: {{ $resultat['puntuacio'] }}%"></div>
         </div>
     </div>
 

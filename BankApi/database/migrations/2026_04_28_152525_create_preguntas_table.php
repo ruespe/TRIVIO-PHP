@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('preguntes', function (Blueprint $table) {
             $table->id();
             $table->string('enunciat');
-            $table->enum('dificultat', ['Fàcil','Mitja','Difícil']);
+            $table->enum('dificultat', ['Fàcil', 'Mitja', 'Difícil']);
             $table->foreignId('categoria_id')->constrained('categories')->onDelete('cascade');
             $table->timestamps();
         });

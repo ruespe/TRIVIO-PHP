@@ -7,7 +7,7 @@
 </div>
 
 @if(empty($respostes))
-    <p class="text-gray-500">No hi ha respostes.</p>
+<p class="text-gray-500">No hi ha respostes.</p>
 @else
 <div class="bg-white rounded-xl shadow overflow-hidden">
     <table class="w-full text-sm">
@@ -27,18 +27,18 @@
                 <td class="px-4 py-3">{{ $r['text'] }}</td>
                 <td class="px-4 py-3">
                     @if($r['es_correcta'])
-                        <span class="text-green-600 font-semibold">✓ Sí</span>
+                    <span class="text-green-600 font-semibold">✓ Sí</span>
                     @else
-                        <span class="text-gray-400">No</span>
+                    <span class="text-gray-400">No</span>
                     @endif
                 </td>
                 <td class="px-4 py-3 text-gray-500">
                     @if(isset($r['pregunta']))
-                        <a href="{{ route('preguntes.show', $r['pregunta']['id']) }}" class="text-indigo-600 hover:underline">
-                            {{ Str::limit($r['pregunta']['enunciat'], 40) }}
-                        </a>
+                    <a href="{{ route('preguntes.show', $r['pregunta']['id']) }}" class="text-indigo-600 hover:underline">
+                        {{ Str::limit($r['pregunta']['enunciat'], 40) }}
+                    </a>
                     @else
-                        #{{ $r['pregunta_id'] }}
+                    #{{ $r['pregunta_id'] }}
                     @endif
                 </td>
                 <td class="px-4 py-3 flex gap-2">
