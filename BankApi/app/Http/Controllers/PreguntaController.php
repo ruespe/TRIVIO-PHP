@@ -28,7 +28,12 @@ class PreguntaController extends Controller
      */
     public function store(Request $request)
     {
-        $pregunta = Pregunta::create($request->all());
+        $validated = $request->validate([
+            'enunciat'     => 'required|string',
+            'dificultat'   => 'required|in:Fàcil,Mitja,Difícil',
+            'categoria_id' => 'required|exists:categories,id',
+        ]);
+        $pregunta = Pregunta::create($validated);
         return response()->json($pregunta, 201);
     }
 
@@ -55,7 +60,12 @@ class PreguntaController extends Controller
     public function update(Request $request, string $id)
     {
         $pregunta = Pregunta::findOrFail($id);
-        $pregunta->update($request->all());
+        $validated = $request->validate([
+            'enunciat'     => 'sometimes|string',
+            'dificultat'   => 'sometimes|in:Fàcil,Mitja,Difícil',
+            'categoria_id' => 'sometimes|exists:categories,id',
+        ]);
+        $pregunta->update($validated);
         return response()->json($pregunta, 200);
     }
 

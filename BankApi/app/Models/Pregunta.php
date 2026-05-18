@@ -18,7 +18,7 @@ class Pregunta extends Model
         return $this->belongsTo(Categoria::class);
     }
 
-    public function resposta(){
+    public function respostes(){
         return $this->hasMany(Resposta::class);
     }
 }

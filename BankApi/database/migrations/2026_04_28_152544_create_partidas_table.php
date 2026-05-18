@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('partides', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('set null');
+            $table->integer('puntuacio')->nullable();
             $table->timestamps();
         });
     }

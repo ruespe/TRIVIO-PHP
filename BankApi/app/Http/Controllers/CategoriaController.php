@@ -28,7 +28,11 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        $categoria = Categoria::create($request->all());
+        $validated = $request->validate([
+            'nom'      => 'required|string|max:255',
+            'descripcio' => 'nullable|string',
+        ]);
+        $categoria = Categoria::create($validated);
         return response()->json($categoria, 201);
     }
 
@@ -55,7 +59,11 @@ class CategoriaController extends Controller
     public function update(Request $request, string $id)
     {
         $categoria = Categoria::findOrFail($id);
-        $categoria->update($request->all());
+        $validated = $request->validate([
+            'nom'      => 'sometimes|string|max:255',
+            'descripcio' => 'nullable|string',
+        ]);
+        $categoria->update($validated);
         return response()->json($categoria, 200);
     }
 

@@ -11,7 +11,7 @@ class Resposta extends Model
     protected $fillable = [
         'text',
         'es_correcta',
-        'resposta_id'
+        'pregunta_id'
     ];
 
     public function pregunta(){

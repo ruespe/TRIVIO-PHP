@@ -17,4 +17,16 @@ class Partida extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function partidaPreguntes()
+    {
+        return $this->hasMany(PartidaPregunta::class);
+    }
+
+    public function preguntes()
+    {
+        return $this->belongsToMany(Pregunta::class, 'partida_preguntes')
+                    ->withPivot('resposta_id')
+                    ->withTimestamps();
+    }
 }

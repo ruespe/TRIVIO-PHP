@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'bank_api' => [
+        'url' => env('BANK_API_URL', 'http://localhost:8000'),
+    ],
+
 ];
