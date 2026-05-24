@@ -32,8 +32,18 @@ class PartidaController extends Controller
             'num_preguntes' => 'nullable|integer|min:1|max:50',
         ]);
 
+        // La ruta és pública, però si s'envia un Bearer token intentem identificar l'usuari
+        $userId = null;
+        $bearerToken = $request->bearerToken();
+        if ($bearerToken) {
+            $accessToken = \Laravel\Sanctum\PersonalAccessToken::findToken($bearerToken);
+            if ($accessToken && $accessToken->tokenable) {
+                $userId = $accessToken->tokenable->id;
+            }
+        }
+
         $partida = Partida::create([
-            'user_id'   => Auth::id(),
+            'user_id'   => $userId,
             'puntuacio' => null,
         ]);
 

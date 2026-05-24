@@ -26,7 +26,9 @@
                 <td class="px-4 py-3 font-semibold text-indigo-700">
                     {{ $p['puntuacio'] !== null ? $p['puntuacio'] . '%' : '—' }}
                 </td>
-                <td class="px-4 py-3 text-gray-500">{{ $p['created_at'] ?? '' }}</td>
+                <td class="px-4 py-3 text-gray-500">
+                    {{ isset($p['created_at']) ? \Carbon\Carbon::parse($p['created_at'])->format('d/m/Y H:i') : '' }}
+                </td>
             </tr>
             @endforeach
         </tbody>
