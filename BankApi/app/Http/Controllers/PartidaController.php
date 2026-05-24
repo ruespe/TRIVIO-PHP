@@ -168,7 +168,7 @@ class PartidaController extends Controller
         $totalPartides  = Partida::whereNotNull('puntuacio')->count();
         $avgPuntuacio   = Partida::whereNotNull('puntuacio')->avg('puntuacio') ?? 0;
         $totalJugadors  = Partida::whereNotNull('puntuacio')->whereNotNull('user_id')
-                            ->distinct('user_id')->count('user_id');
+            ->distinct('user_id')->count('user_id');
         $totalPreguntes = Pregunta::count();
         $totalRespostes = Resposta::count();
 
