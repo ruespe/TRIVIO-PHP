@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PartidaController;
 use App\Http\Controllers\PreguntaController;
 use App\Http\Controllers\RespostaController;
+use App\Http\Controllers\StatsController;
 use Illuminate\Support\Facades\Route;
 
 // Pàgina d'inici amb llista d'endpoints
@@ -38,3 +39,7 @@ Route::post('/partides',                  [PartidaController::class, 'store'])->
 Route::get('/partides/{id}/play',         [PartidaController::class, 'play'])->name('partides.play');
 Route::post('/partides/{id}/puntuar',     [PartidaController::class, 'puntuar'])->name('partides.puntuar');
 Route::get('/les-meves-partides',         [PartidaController::class, 'meuesPartides'])->name('partides.meues');
+
+// Rànquing i Estadístiques
+Route::get('/ranking',                    [StatsController::class, 'ranking'])->name('ranking');
+Route::get('/estadistiques',              [StatsController::class, 'estadistiques'])->name('estadistiques');

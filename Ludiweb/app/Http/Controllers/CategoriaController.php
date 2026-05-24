@@ -33,23 +33,23 @@ class CategoriaController extends Controller
         return back()->withErrors($response->json('errors', []))->withInput();
     }
 
-    public function show(int $id)
+    public function show(int $category)
     {
-        $response  = $this->api->getCategoria($id);
+        $response  = $this->api->getCategoria($category);
         $categoria = $response->successful() ? $response->json() : null;
         return view('categories.show', compact('categoria'));
     }
 
-    public function edit(int $id)
+    public function edit(int $category)
     {
-        $response  = $this->api->getCategoria($id);
+        $response  = $this->api->getCategoria($category);
         $categoria = $response->successful() ? $response->json() : null;
         return view('categories.edit', compact('categoria'));
     }
 
-    public function update(Request $request, int $id)
+    public function update(Request $request, int $category)
     {
-        $response = $this->api->updateCategoria($id, $request->only('nom', 'descripcio'));
+        $response = $this->api->updateCategoria($category, $request->only('nom', 'descripcio'));
 
         if ($response->successful()) {
             return redirect()->route('categories.index')
@@ -59,9 +59,9 @@ class CategoriaController extends Controller
         return back()->withErrors($response->json('errors', []))->withInput();
     }
 
-    public function destroy(int $id)
+    public function destroy(int $category)
     {
-        $this->api->deleteCategoria($id);
+        $this->api->deleteCategoria($category);
         return redirect()->route('categories.index')
             ->with('success', 'Categoria eliminada correctament');
     }

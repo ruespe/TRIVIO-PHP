@@ -4,62 +4,55 @@ namespace App\Http\Controllers;
 
 use App\Models\Resposta;
 use Illuminate\Http\Request;
+
 class RespostaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        return response()->json(Resposta::all());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        $resposta = Resposta::create($request->all());
+        $validated = $request->validate([
+            'text'        => 'required|string|max:255',
+            'es_correcta' => 'required|boolean',
+            'pregunta_id' => 'required|exists:preguntes,id',
+        ]);
+
+        if (Resposta::where('pregunta_id', $validated['pregunta_id'])->count() >= 3) {
+            return response()->json([
+                'message' => 'Una pregunta només pot tenir un màxim de 3 respostes.',
+                'errors'  => ['pregunta_id' => ['Límit de 3 respostes per pregunta assolit.']],
+            ], 422);
+        }
+
+        $resposta = Resposta::create($validated);
         return response()->json($resposta, 201);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        //
+        return response()->json(Resposta::findOrFail($id));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        //
+        $resposta = Resposta::findOrFail($id);
+
+        $validated = $request->validate([
+            'text'        => 'sometimes|required|string|max:255',
+            'es_correcta' => 'sometimes|required|boolean',
+            'pregunta_id' => 'sometimes|required|exists:preguntes,id',
+        ]);
+
+        $resposta->update($validated);
+        return response()->json($resposta);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+        Resposta::findOrFail($id)->delete();
+        return response()->json(null, 204);
     }
 }

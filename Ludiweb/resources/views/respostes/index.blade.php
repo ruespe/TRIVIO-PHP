@@ -27,7 +27,7 @@
                 <td class="px-4 py-3">{{ $r['text'] }}</td>
                 <td class="px-4 py-3">
                     @if($r['es_correcta'])
-                    <span class="text-green-600 font-semibold">✓ Sí</span>
+                    <span class="text-green-600 font-semibold">Sí</span>
                     @else
                     <span class="text-gray-400">No</span>
                     @endif

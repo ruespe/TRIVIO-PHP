@@ -37,7 +37,7 @@
         <div class="bg-white rounded-lg border {{ $r['es_correcta'] ? 'border-green-400' : 'border-gray-200' }} px-4 py-3 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 @if($r['es_correcta'])
-                <span class="text-green-500 font-bold">✓</span>
+                <span class="text-green-500 font-bold">+</span>
                 @else
                 <span class="text-gray-300">○</span>
                 @endif

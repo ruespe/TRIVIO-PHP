@@ -157,4 +157,14 @@ class ApiService
     {
         return $this->http()->get('/partides');
     }
+
+    public function getRanking(): Response
+    {
+        return $this->http()->get('/ranking');
+    }
+
+    public function getEstadistiques(): Response
+    {
+        return $this->http()->get('/estadistiques');
+    }
 }

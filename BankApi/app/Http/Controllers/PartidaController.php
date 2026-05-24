@@ -6,6 +6,7 @@ use App\Models\Partida;
 use App\Models\PartidaPregunta;
 use App\Models\Pregunta;
 use App\Models\Resposta;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -133,4 +134,49 @@ class PartidaController extends Controller
     public function edit(string $id) {}
     public function update(Request $request, string $id) {}
     public function destroy(string $id) {}
+
+    // GET /api/ranking
+    public function ranking()
+    {
+        $ranking = User::select('users.id', 'users.name')
+            ->join('partides', 'partides.user_id', '=', 'users.id')
+            ->whereNotNull('partides.puntuacio')
+            ->selectRaw('MAX(partides.puntuacio) as millor_puntuacio')
+            ->selectRaw('ROUND(AVG(partides.puntuacio), 1) as avg_puntuacio')
+            ->selectRaw('COUNT(partides.id) as total_partides')
+            ->groupBy('users.id', 'users.name')
+            ->orderByDesc('millor_puntuacio')
+            ->limit(10)
+            ->get();
+
+        return response()->json($ranking);
+    }
+
+    // GET /api/estadistiques
+    public function estadistiques()
+    {
+        $totalPartides  = Partida::whereNotNull('puntuacio')->count();
+        $avgPuntuacio   = Partida::whereNotNull('puntuacio')->avg('puntuacio') ?? 0;
+        $totalJugadors  = Partida::whereNotNull('puntuacio')->whereNotNull('user_id')
+                            ->distinct('user_id')->count('user_id');
+        $totalPreguntes = Pregunta::count();
+        $totalRespostes = Resposta::count();
+
+        $perDificultat = PartidaPregunta::join('preguntes', 'preguntes.id', '=', 'partida_preguntes.pregunta_id')
+            ->join('partides', 'partides.id', '=', 'partida_preguntes.partida_id')
+            ->whereNotNull('partida_preguntes.resposta_id')
+            ->whereNotNull('partides.puntuacio')
+            ->selectRaw('preguntes.dificultat, COUNT(*) as total')
+            ->groupBy('preguntes.dificultat')
+            ->pluck('total', 'dificultat');
+
+        return response()->json([
+            'total_partides'  => $totalPartides,
+            'avg_puntuacio'   => round($avgPuntuacio, 1),
+            'total_jugadors'  => $totalJugadors,
+            'total_preguntes' => $totalPreguntes,
+            'total_respostes' => $totalRespostes,
+            'per_dificultat'  => $perDificultat,
+        ]);
+    }
 }

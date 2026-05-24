@@ -31,19 +31,19 @@
 
 <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
     <a href="{{ route('categories.index') }}" class="bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl p-5 text-center shadow transition">
-        <div class="text-2xl mb-2">📂</div>
+        <div class="text-2xl mb-2"></div>
         <div class="font-semibold">Categories</div>
     </a>
     <a href="{{ route('preguntes.index') }}" class="bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl p-5 text-center shadow transition">
-        <div class="text-2xl mb-2">❓</div>
+        <div class="text-2xl mb-2"></div>
         <div class="font-semibold">Preguntes</div>
     </a>
     <a href="{{ route('respostes.index') }}" class="bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl p-5 text-center shadow transition">
-        <div class="text-2xl mb-2">✅</div>
+        <div class="text-2xl mb-2"></div>
         <div class="font-semibold">Respostes</div>
     </a>
     <a href="{{ route('partides.nova') }}" class="bg-green-600 hover:bg-green-700 text-white rounded-xl p-5 text-center shadow transition">
-        <div class="text-2xl mb-2">🎮</div>
+        <div class="text-2xl mb-2"></div>
         <div class="font-semibold">Jugar!</div>
     </a>
 </div>

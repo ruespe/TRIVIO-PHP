@@ -5,7 +5,7 @@
 
 @if(empty($partides))
 <div class="text-center py-12 text-gray-400">
-    <div class="text-4xl mb-3">🎮</div>
+    <div class="text-4xl mb-3"></div>
     <p>Encara no has jugat cap partida.</p>
     <a href="{{ route('partides.nova') }}" class="inline-block mt-4 bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700">Jugar ara</a>
 </div>

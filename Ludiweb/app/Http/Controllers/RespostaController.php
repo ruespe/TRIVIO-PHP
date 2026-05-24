@@ -40,23 +40,23 @@ class RespostaController extends Controller
         return back()->withErrors($response->json('errors', []))->withInput();
     }
 
-    public function edit(int $id)
+    public function edit(int $resposta)
     {
-        $response  = $this->api->getResposta($id);
-        $resposta  = $response->successful() ? $response->json() : null;
+        $response  = $this->api->getResposta($resposta);
+        $respostaData  = $response->successful() ? $response->json() : null;
 
         $pregResponse = $this->api->getPreguntes();
         $preguntes   = $pregResponse->successful() ? $pregResponse->json() : [];
 
-        return view('respostes.edit', compact('resposta', 'preguntes'));
+        return view('respostes.edit', ['resposta' => $respostaData, 'preguntes' => $preguntes]);
     }
 
-    public function update(Request $request, int $id)
+    public function update(Request $request, int $resposta)
     {
         $data = $request->only('text', 'pregunta_id');
         $data['es_correcta'] = $request->boolean('es_correcta');
 
-        $response = $this->api->updateResposta($id, $data);
+        $response = $this->api->updateResposta($resposta, $data);
 
         if ($response->successful()) {
             $preguntaId = $request->input('pregunta_id');
@@ -67,10 +67,10 @@ class RespostaController extends Controller
         return back()->withErrors($response->json('errors', []))->withInput();
     }
 
-    public function destroy(int $id, Request $request)
+    public function destroy(int $resposta, Request $request)
     {
         $preguntaId = $request->query('pregunta_id');
-        $this->api->deleteResposta($id);
+        $this->api->deleteResposta($resposta);
 
         if ($preguntaId) {
             return redirect()->route('preguntes.show', $preguntaId)

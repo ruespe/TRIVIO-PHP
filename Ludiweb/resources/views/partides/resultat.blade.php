@@ -2,11 +2,7 @@
 @section('title', 'Resultat')
 @section('content')
 <div class="max-w-md mx-auto text-center">
-    <div class="text-6xl mb-4">
-        @if($resultat && $resultat['puntuacio'] >= 70) 🏆
-        @elseif($resultat && $resultat['puntuacio'] >= 40) 🎯
-        @else 😅 @endif
-    </div>
+    <div class="text-6xl mb-4"></div>
 
     @if($resultat)
     <h1 class="text-3xl font-bold text-indigo-700 mb-2">Resultat de la partida #{{ $id }}</h1>

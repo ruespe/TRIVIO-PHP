@@ -2,7 +2,7 @@
 @section('title', 'Jugar - Nova partida')
 @section('content')
 <div class="max-w-md mx-auto text-center">
-    <div class="text-6xl mb-4">🎮</div>
+    <div class="text-6xl mb-4"></div>
     <h1 class="text-3xl font-bold text-indigo-700 mb-2">Nova Partida</h1>
     <p class="text-gray-500 mb-8">Tria el nombre de preguntes i comença a jugar!</p>
 

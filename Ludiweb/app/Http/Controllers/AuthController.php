@@ -57,11 +57,8 @@ class AuthController extends Controller
         ));
 
         if ($response->successful()) {
-            $data = $response->json();
-            Session::put('api_token', $data['token']);
-            Session::put('api_user', $data['user']);
-            return redirect()->route('home')
-                ->with('success', 'Compte creat i sessió iniciada');
+            return redirect()->route('login')
+                ->with('success', 'Compte creat! Ara pots iniciar sessió.');
         }
 
         return back()->withErrors($response->json('errors', []))->withInput();
